@@ -1,0 +1,163 @@
+Panels:
+  - Class: rviz_common/Displays
+    Name: Displays
+  - Class: rviz_common/Selection
+    Name: Selection
+  - Class: rviz_common/Views
+    Name: Views
+  - Class: rviz_common/Time
+    Name: Time
+
+Visualization Manager:
+  Class: ""
+  Displays:
+    - Class: rviz_default_plugins/Axes
+      Enabled: true
+      Length: 5
+      Name: Axes
+      Radius: 0.1
+      Reference Frame: world
+
+    - Class: rviz_default_plugins/Grid
+      Enabled: true
+      Name: Grid
+      Cell Size: 1
+      Color: 160; 160; 164
+      Line Style:
+        Line Width: 0.03
+        Value: Lines
+      Plane: XY
+      Plane Cell Count: 30
+      Reference Frame: world
+
+    - Class: rviz_default_plugins/PointCloud2
+      Enabled: true
+      Name: Map
+      Topic:
+        Depth: 5
+        Durability Policy: Volatile
+        History Policy: Keep Last
+        Reliability Policy: Reliable
+        Value: /map_generator/global_cloud
+      Color Transformer: FlatColor
+      Color: 100; 100; 100
+      Size (m): 0.05
+      Style: Points
+
+    - Class: rviz_default_plugins/PointCloud2
+      Enabled: true
+      Name: SDF_Occupied
+      Topic:
+        Depth: 5
+        Durability Policy: Volatile
+        History Policy: Keep Last
+        Reliability Policy: Reliable
+        Value: /sdf_map/occupancy_all_1
+      Color Transformer: FlatColor
+      Color: 0; 255; 0
+      Size (m): 0.1
+      Style: Points
+
+    - Class: rviz_default_plugins/Marker
+      Enabled: true
+      Name: Trajectory1
+      Topic:
+        Depth: 5
+        Durability Policy: Volatile
+        History Policy: Keep Last
+        Reliability Policy: Reliable
+        Value: /planning_vis/trajectory_1
+      Namespaces:
+        {}
+
+    - Class: rviz_default_plugins/Marker
+      Enabled: true
+      Name: TravelTraj1
+      Topic:
+        Depth: 5
+        Durability Policy: Volatile
+        History Policy: Keep Last
+        Reliability Policy: Reliable
+        Value: /planning/travel_traj_1
+      Namespaces:
+        {}
+
+    - Class: rviz_default_plugins/Marker
+      Enabled: true
+      Name: PositionCmd1
+      Topic:
+        Depth: 5
+        Durability Policy: Volatile
+        History Policy: Keep Last
+        Reliability Policy: Reliable
+        Value: /planning/position_cmd_vis_1
+      Namespaces:
+        {}
+
+    - Class: rviz_default_plugins/MarkerArray
+      Enabled: true
+      Name: Frontiers1
+      Topic:
+        Depth: 5
+        Durability Policy: Volatile
+        History Policy: Keep Last
+        Reliability Policy: Reliable
+        Value: /planning_vis/frontier_1
+
+    - Class: rviz_default_plugins/MarkerArray
+      Enabled: true
+      Name: Viewpoints1
+      Topic:
+        Depth: 5
+        Durability Policy: Volatile
+        History Policy: Keep Last
+        Reliability Policy: Reliable
+        Value: /planning_vis/viewpoints_1
+
+  Global Options:
+    Background Color: 48; 48; 48
+    Fixed Frame: world
+    Frame Rate: 30
+
+  Tools:
+    - Class: rviz_default_plugins/MoveCamera
+    - Class: rviz_default_plugins/Select
+    - Class: rviz_default_plugins/FocusCamera
+    - Class: rviz_default_plugins/Measure
+
+  Value: true
+  Views:
+    Current:
+      Class: rviz_default_plugins/Orbit
+      Distance: 30
+      Enable Stereo Rendering:
+        Value: false
+      Focal Point:
+        X: 0
+        Y: 0
+        Z: 0
+      Focal Shape Fixed Size: true
+      Focal Shape Size: 0.05
+      Name: Current View
+      Near Clip Distance: 0.01
+      Pitch: 0.5
+      Target Frame: world
+      Value: Orbit (rviz_default_plugins)
+      Yaw: 0.5
+
+Window Geometry:
+  Displays:
+    collapsed: false
+  Height: 900
+  Hide Left Dock: false
+  Hide Right Dock: true
+  QMainWindow State: 000000ff
+  Selection:
+    collapsed: false
+  Time:
+    collapsed: false
+  Views:
+    collapsed: true
+  Width: 1200
+  X: 100
+  Y: 100

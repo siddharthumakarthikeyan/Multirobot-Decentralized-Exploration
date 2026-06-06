@@ -1,0 +1,40 @@
+cmake_minimum_required(VERSION 3.8)
+project(so3_quadrotor_simulator)
+set(CMAKE_CXX_STANDARD 17)
+
+find_package(ament_cmake REQUIRED)
+find_package(rclcpp REQUIRED)
+find_package(quadrotor_msgs REQUIRED)
+find_package(uav_utils REQUIRED)
+find_package(nav_msgs REQUIRED)
+find_package(sensor_msgs REQUIRED)
+find_package(Eigen3 REQUIRED)
+find_package(Armadillo REQUIRED)
+
+include_directories(
+  include
+  ${CMAKE_CURRENT_SOURCE_DIR}/include/ode
+  ${EIGEN3_INCLUDE_DIR}
+  ${ARMADILLO_INCLUDE_DIRS}
+)
+
+add_library(quadrotor_dynamics src/dynamics/Quadrotor.cpp)
+ament_target_dependencies(quadrotor_dynamics rclcpp)
+target_include_directories(quadrotor_dynamics PUBLIC
+  $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
+  $<INSTALL_INTERFACE:include>
+)
+
+add_executable(quadrotor_simulator_so3 src/quadrotor_simulator_so3.cpp)
+ament_target_dependencies(quadrotor_simulator_so3 rclcpp quadrotor_msgs uav_utils nav_msgs sensor_msgs)
+target_link_libraries(quadrotor_simulator_so3 quadrotor_dynamics)
+
+install(TARGETS quadrotor_dynamics
+  ARCHIVE DESTINATION lib
+  LIBRARY DESTINATION lib
+  RUNTIME DESTINATION bin
+)
+install(TARGETS quadrotor_simulator_so3 DESTINATION lib/${PROJECT_NAME})
+install(DIRECTORY include/ DESTINATION include)
+install(DIRECTORY launch/ DESTINATION share/${PROJECT_NAME}/launch)
+ament_package()

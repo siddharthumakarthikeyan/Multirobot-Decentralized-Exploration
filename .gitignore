@@ -1,0 +1,28 @@
+# Build directories
+build/
+install/
+log/
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# ROS2
+*.bag
+*.db3
+
+# Compiled
+*.o
+*.so
+*.a
+
+# LKH solver outputs
+/tmp/lkh_mtsp/
+/tmp/lkh_tsp/
